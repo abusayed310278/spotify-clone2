@@ -6,6 +6,7 @@ import adminRoutes from "./routes/admin.route.js"
 import songRoutes from "./routes/song.route.js"
 import statRoutes from "./routes/stat.route.js"
 import albumRoutes from "./routes/album.route.js"
+import connectToMongoDB from './lib/db.js'
 
 dotenv.config()
 const app=express()
@@ -21,5 +22,6 @@ app.use("/api/albums",albumRoutes)
 app.use("/api/stats",statRoutes)
 
 app.listen(PORT,()=>{
+    connectToMongoDB()
     console.log("server is running on port:"+PORT);
 })
