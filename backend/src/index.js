@@ -2,6 +2,8 @@ import express from 'express'
 import dotenv from "dotenv"
 
 import { clerkMiddleware } from '@clerk/express'
+import fileUpload from "express-fileupload"
+import path from "path"
 
 import userRoutes from "./routes/user.route.js"
 import authRoutes from "./routes/auth.route.js"
@@ -11,12 +13,26 @@ import statRoutes from "./routes/stat.route.js"
 import albumRoutes from "./routes/album.route.js"
 import connectToMongoDB from './lib/db.js'
 
+
 dotenv.config()
 const app=express()
+const __dirname=path.resolve()
 
 app.use(express.json()) //to parse req.body
 
+
 app.use(clerkMiddleware())
+app.use(
+	fileUpload({
+		useTempFiles: true,
+		tempFileDir: path.join(__dirname, "tmp"),
+		createParentPath: true,
+		limits: {
+			fileSize: 10 * 1024 * 1024, // 10MB  max file size
+		},
+	})
+);
+
 
 const PORT=process.env.PORT
 
