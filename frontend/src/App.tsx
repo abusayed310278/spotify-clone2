@@ -1,17 +1,14 @@
-import { Button } from "@/components/ui/button";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/clerk-react";
+
+import { Routes,Route } from "react-router-dom";
+import HomePage from "./pages/home/HomePage";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
      
 
-      <header>
+      {/* <header>
         <SignedOut>
           <SignInButton>
             <Button>
@@ -23,7 +20,16 @@ function App() {
         <SignedIn>
           <UserButton />
         </SignedIn>
-      </header>
+      </header> */}
+      <Routes>
+          <Route path="/" element={<HomePage />}/>
+          <Route path="/auth-callback" element={<AuthCallbackPage />}/>
+
+
+      </Routes>
+
+      <Toaster />
+
     </>
   );
 }
