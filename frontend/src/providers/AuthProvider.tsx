@@ -1,6 +1,6 @@
 import { axiosInstance } from '@/lib/axios'
 import { useAuth } from '@clerk/clerk-react'
-import { Loader2 } from 'lucide-react'
+import { Loader } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 
 const updateApiToken=(token:string |null)=>{
@@ -39,7 +39,7 @@ const AuthProvider = ({children}:{children:React.ReactNode}) => {
 
     if(loading)return(
         <div className='h-screen w-full flex items-center justify-center'>
-            <Loader2 className='size-8 text-emerald-500 animate-spin'/>
+            <Loader className='size-10 text-emerald-500 animate-spin'/>
         </div>
     )
 
