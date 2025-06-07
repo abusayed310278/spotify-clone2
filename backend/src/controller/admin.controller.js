@@ -3,17 +3,17 @@ import { Album } from "../models/album.model.js";
 import cloudinary from "../lib/cloudinary.js";
 
 // helper function for cloudinary uploads
-// const uploadToCloudinary = async (file) => {
-// 	try {
-// 		const result = await cloudinary.uploader.upload(file.tempFilePath, {
-// 			resource_type: "auto",
-// 		});
-// 		return result.secure_url;
-// 	} catch (error) {
-// 		console.log("Error in uploadToCloudinary", error);
-// 		throw new Error("Error uploading to cloudinary");
-// 	}
-// };
+const uploadToCloudinary = async (file) => {
+	try {
+		const result = await cloudinary.uploader.upload(file.tempFilePath, {
+			resource_type: "auto",
+		});
+		return result.secure_url;
+	} catch (error) {
+		console.log("Error in uploadToCloudinary", error);
+		throw new Error("Error uploading to cloudinary");
+	}
+};
 
 export const createSong = async (req, res, next) => {
 	try {
@@ -52,27 +52,27 @@ export const createSong = async (req, res, next) => {
 	}
 };
 
-// export const deleteSong = async (req, res, next) => {
-// 	try {
-// 		const { id } = req.params;
+export const deleteSong = async (req, res, next) => {
+	try {
+		const { id } = req.params;
 
-// 		const song = await Song.findById(id);
+		const song = await Song.findById(id);
 
-// 		// if song belongs to an album, update the album's songs array
-// 		if (song.albumId) {
-// 			await Album.findByIdAndUpdate(song.albumId, {
-// 				$pull: { songs: song._id },
-// 			});
-// 		}
+		// if song belongs to an album, update the album's songs array
+		if (song.albumId) {
+			await Album.findByIdAndUpdate(song.albumId, {
+				$pull: { songs: song._id },
+			});
+		}
 
-// 		await Song.findByIdAndDelete(id);
+		await Song.findByIdAndDelete(id);
 
-// 		res.status(200).json({ message: "Song deleted successfully" });
-// 	} catch (error) {
-// 		console.log("Error in deleteSong", error);
-// 		next(error);
-// 	}
-// };
+		res.status(200).json({ message: "Song deleted successfully" });
+	} catch (error) {
+		console.log("Error in deleteSong", error);
+		next(error);
+	}
+};
 
 // export const createAlbum = async (req, res, next) => {
 // 	try {
