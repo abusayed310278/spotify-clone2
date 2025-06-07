@@ -39,7 +39,7 @@ const AuthProvider = () => {
 
     if(loading)return(
         <div className='h-screen w-full flex items-center justify-center'>
-            <Loader2 />
+            <Loader2 className='size-8 text-emerald-500 animate-spin'/>
         </div>
     )
 
