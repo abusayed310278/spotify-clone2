@@ -2,6 +2,7 @@
 import { Routes,Route } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import { Toaster } from "react-hot-toast";
+import AuthCallbackPage from "./pages/auth-callback/AuthCallbackPage";
 
 function App() {
   return (
