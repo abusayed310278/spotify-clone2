@@ -3,7 +3,7 @@ import { useAuth } from '@clerk/clerk-react'
 import { Loader2 } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 
-const updateApiToken(token:string |null)=>{
+const updateApiToken=(token:string |null)=>{
     if(token){
         axiosInstance.defaults.headers.common['Authorization']=`Bearer ${token}`
     }else{
