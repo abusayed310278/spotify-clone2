@@ -12,9 +12,9 @@ const updateApiToken(token:string |null)=>{
     }
 }
 
-const AuthProvider = () => {
+const AuthProvider = ({children}:{children:React.ReactNode}) => {
 
-    const {getToken,userId}=useAuth()
+    const {getToken}=useAuth()
     const [loading,setLoading]=useState(true)
 
     useEffect(()=>{
@@ -45,7 +45,9 @@ const AuthProvider = () => {
 
 
   return (
-    <div>AuthProvider</div>
+    <>
+        {children}
+    </>
   )
 }
 
