@@ -1,5 +1,6 @@
 import express from 'express'
 import dotenv from "dotenv"
+import cors from "cors"
 
 import { clerkMiddleware } from '@clerk/express'
 import fileUpload from "express-fileupload"
@@ -17,6 +18,13 @@ import connectToMongoDB from './lib/db.js'
 dotenv.config()
 const app=express()
 const __dirname=path.resolve()
+
+app.use(
+	cors({
+		origin: "http://localhost:3000",
+		credentials: true,
+	})
+);
 
 app.use(express.json()) //to parse req.body
 
