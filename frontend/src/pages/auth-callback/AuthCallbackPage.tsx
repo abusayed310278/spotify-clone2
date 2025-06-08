@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const AuthCallbackPage = () => {
 	const { isLoaded, user } = useUser();
 	const navigate = useNavigate();
-	const syncAttempted = useRef(false);
+	const syncAttempted = useRef(false); //we already know in development mode react app run twice , that's why this line add
 
 	useEffect(() => {
 
@@ -32,7 +32,7 @@ const AuthCallbackPage = () => {
 		};
 
 		syncUser();
-    
+
 	}, [isLoaded, user, navigate]);
 
 	return (
