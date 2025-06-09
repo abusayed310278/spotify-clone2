@@ -1,25 +1,33 @@
-import { axiosInstance } from "@/lib/axios"
+import { axiosInstance } from "@/lib/axios";
 import { create } from "zustand";
 
-export const useMusicStore=create((set)=>({
+interface MusicStore {
+  songs: [];
+  albums: [];
+  isLoading: boolean;
+  error: string | null;
 
-    albums:[],
-    songs:[],
-    isLoading:false,
-    error:null,
 
+  fetchAlbums: () => Promise<void>;
 
-    fetchAlbums:async()=>{
-        set({isLoading:true,error:null})
+}
 
-        try{
-            const response=await axiosInstance.get("/albums")
-            set({albums:response.data})
-        }catch(error:any){
-            set({error:error.response.data.message})
-        }finally{
-            set({isLoadig:false})
-        }
+export const useMusicStore = create<MusicStore>((set) => ({
+  albums: [],
+  songs: [],
+  isLoading: false,
+  error: null,
+
+  fetchAlbums: async () => {
+    set({ isLoading: true, error: null });
+
+    try {
+      const response = await axiosInstance.get("/albums");
+      set({ albums: response.data });
+    } catch (error: any) {
+      set({ error: error.response.data.message });
+    } finally {
+      set({ isLoading: false });
     }
-
-}))
+  },
+}));
