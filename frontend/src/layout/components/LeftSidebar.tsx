@@ -4,10 +4,19 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { SignedIn } from "@clerk/clerk-react";
 import { HomeIcon, Library, MessageCircle } from "lucide-react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const LeftSidebar = () => {
-  const isLoading = true;
+  const {albums,fetchAlbums,isLoading} = useMusicStore();
+
+  //data fetching=>zustand
+
+
+  useEffect(()=>{
+    //fetch data
+    fetchAlbums()
+  },[fetchAlbums])
 
   return (
     <div className="h-full flex flex-col gap-2">
@@ -66,7 +75,7 @@ const LeftSidebar = () => {
         </ScrollArea>
 
 
-        
+
       </div>
     </div>
   );
