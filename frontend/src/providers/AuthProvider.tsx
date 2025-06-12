@@ -1,4 +1,5 @@
 import { axiosInstance } from '@/lib/axios'
+import { useAuthStore } from '@/stores/useAuthStore'
 import { useAuth } from '@clerk/clerk-react'
 import { Loader } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
@@ -16,6 +17,7 @@ const AuthProvider = ({children}:{children:React.ReactNode}) => {
 
     const {getToken}=useAuth()
     const [loading,setLoading]=useState(true)
+    const {checkAdminStatus}=useAuthStore()
 
     useEffect(()=>{
 
@@ -23,6 +25,10 @@ const AuthProvider = ({children}:{children:React.ReactNode}) => {
             try{
                 const token=await getToken()
                 updateApiToken(token)
+
+                if(token){
+                    await checkAdminStatus()
+                }
 
             }catch(error:any){
                 updateApiToken(null)
