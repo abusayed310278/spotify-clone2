@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 import AudioPlayer from "./components/AudioPlayer"
 import LeftSidebar from "./components/LeftSidebar";
 import FriendsActivity from "./components/FriendsActivity";
-import PlaybackControls from "./components/PlaybackControls";
+import { PlaybackControls } from "./components/PlaybackControls";
+
 
 const MainLayout = () => {
   const [isMobile, setIsMobile] = useState(false);
