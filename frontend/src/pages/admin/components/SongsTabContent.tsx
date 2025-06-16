@@ -22,10 +22,10 @@ const SongsTabContent = () => {
             </CardTitle>
             <CardDescription>Manage your music tracks</CardDescription>
           </div>
-          {/* <AddSongDialog /> */}
-          <Button>
+          <AddSongDialog />
+          {/* <Button>
             + Add Track 
-          </Button>
+          </Button> */}
         </div>
       </CardHeader>
       <CardContent>
