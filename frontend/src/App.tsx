@@ -29,7 +29,7 @@ function App() {
           path="/sso-callback"
           element={
             <AuthenticateWithRedirectCallback
-            signUpForceRedirectUrl={"/auth-callback"}
+              signUpForceRedirectUrl={"/auth-callback"}
             />
           }
         />
@@ -37,15 +37,13 @@ function App() {
         <Route path="/admin" element={<AdminPage />} />
 
         <Route element={<MainLayout />}>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/chat' element={<ChatPage />} />
-          <Route path='/albums/:albumId' element={<AlbumPage />} />
-
-
+          <Route path="/" element={<HomePage />} />
+          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/albums/:albumId" element={<AlbumPage />} />
         </Route>
       </Routes>
 
-      <Toaster />
+      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 }
